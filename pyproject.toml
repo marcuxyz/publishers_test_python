@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "test-publisher"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "test_publisher"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+celery = "^5.2.7"
+rq = "^1.13.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
