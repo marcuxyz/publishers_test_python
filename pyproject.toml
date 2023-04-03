@@ -10,6 +10,8 @@ packages = [{include = "test_publisher"}]
 python = "^3.11"
 celery = "^5.2.7"
 rq = "^1.13.0"
+flask = "^2.2.3"
+flask-sqlalchemy = "^3.0.3"
 
 
 [tool.poetry.group.dev.dependencies]
