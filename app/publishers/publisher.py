@@ -1,22 +1,21 @@
 from abc import abstractmethod
 
 from rq import Queue
-from rq.serializers import JSONSerializer
 
 from config.redis import RedisConnection
 
+
 class Publisher:
-    @abstractmethod
-    def publish_message(self):
+    def __init__(self):
         queue = Queue(connection=self.redis(), **self.queue_params())
-        queue.enqueue(self.payload)
+        queue.enqueue(self.perform)
 
     @abstractmethod
-    def queue_params(self):
+    def perform(self):
         raise NotImplementedError
 
     @abstractmethod
-    def payload(self):
+    def queue_params(self):
         raise NotImplementedError
 
     def redis(self):
