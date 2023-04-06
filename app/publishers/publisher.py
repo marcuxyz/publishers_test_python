@@ -10,6 +10,8 @@ class Publisher:
         queue = Queue(connection=self.redis(), **self.queue_params())
         queue.enqueue(self.perform)
 
+        self.queue_ids = queue.get_job_ids()
+
     @abstractmethod
     def perform(self):
         raise NotImplementedError
@@ -19,4 +21,6 @@ class Publisher:
         raise NotImplementedError
 
     def redis(self):
-        return RedisConnection().connect()
+        redis = RedisConnection()
+
+        return redis.connect()
